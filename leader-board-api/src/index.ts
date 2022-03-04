@@ -2,9 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 
-//import { dbCreateConnection } from "./orm/dbCreateConnection";
 import LeaderBoardRoutes from "../src/routes/LeaderBoardRoutes";
-import { Board } from "./models/BoardModel";
 
 export const app = express();
 var cors = require("cors");

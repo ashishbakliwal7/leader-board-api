@@ -3,7 +3,6 @@ import { Board } from "../models/BoardModel";
 
 const getOne = async (req: Request, res: Response) => {
   const id = req.params.id;
-
   const record = await Board.findOne({ rank: id });
 
   res.send({
@@ -38,6 +37,12 @@ const listAll = async (req: Request, res: Response) => {
 
 const destroy = async (req: Request, res: Response) => {
   const id = req.params.id;
+
+  if (!id)
+    return res.send({
+      message: "No id",
+    });
+
   let resultDestroyed = await Board.findOneAndRemove({ rank: id });
   let result = await Board.find({ rank: { $gte: id } });
   result.map(async (item) => {
@@ -45,6 +50,7 @@ const destroy = async (req: Request, res: Response) => {
     const update = { rank: item.rank - 1 };
     const user = await Board.findOneAndUpdate(filter, update);
   });
+
   res.send({
     data: result,
   });
@@ -53,6 +59,7 @@ const destroy = async (req: Request, res: Response) => {
 const updateRecord = async (req: Request, res: Response) => {
   const id = req.params.id;
   const body = req.body;
+
   if (!id)
     return res.send({
       message: "No id",
@@ -60,7 +67,6 @@ const updateRecord = async (req: Request, res: Response) => {
 
   const filter = { rank: id };
   const update = { name: body.name };
-
   const user = await Board.findOneAndUpdate(filter, update);
 
   res.send({
