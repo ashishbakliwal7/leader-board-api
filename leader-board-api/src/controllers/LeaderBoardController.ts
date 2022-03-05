@@ -46,6 +46,7 @@ const destroy = async (req: Request, res: Response) => {
   let resultDestroyed = await Board.findOneAndRemove({ rank: id });
   let result = await Board.find({ rank: { $gte: id } });
   result.map(async (item) => {
+    // Update record order after destroying any record
     const filter = { rank: item.rank };
     const update = { rank: item.rank - 1 };
     const user = await Board.findOneAndUpdate(filter, update);
@@ -80,6 +81,7 @@ const reorderList = async (req: Request, res: Response) => {
 
   let result = await Promise.all(
     listArr.map(async (item: any, i: number) => {
+      // Update list with new order
       const filter = { rank: i + 1 };
       const update = { name: item.name };
       return await Board.findOneAndUpdate(filter, update);
