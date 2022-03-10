@@ -14,8 +14,8 @@ app.use("/leader-board", LeaderBoardRoutes);
 mongoose.connect(
   "mongodb+srv://ashish123:ashish123@cluster0.4hrpt.mongodb.net/test-todo",
   {},
-  (err) => {
-    if (!err : any) {
+  (err : any) => {
+    if (!err) {
       console.log("connected to database");
     } else {
       console.log(err);
