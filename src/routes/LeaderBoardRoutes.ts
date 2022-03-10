@@ -1,8 +1,8 @@
-import { Router } from "express";
+const express = require('express');
 
 import LeaderBoardController from "../controllers/LeaderBoardController";
 
-const router = Router();
+const router = express.Router();
 
 router.get("/", LeaderBoardController.listAll);
 
