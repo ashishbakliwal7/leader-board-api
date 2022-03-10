@@ -96,6 +96,8 @@ function App() {
   const handleChange = async (val, newindex) => {
     let x = array_move(users, val.target.value, newindex);
     setUsers([...x]);
+    console.log([...x]);
+    setName(name);
     try {
       let res = await fetch("http://localhost:4000/leader-board/reorder", {
         method: "POST",
@@ -135,11 +137,11 @@ function App() {
   function array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
       var k = new_index - arr.length + 1;
-      while (k--) {
-        arr.push(undefined);
-      }
+      while (k--) {}
     }
+    console.log(old_index, new_index);
     arr.splice(new_index - 1, 0, arr.splice(old_index - 1, 1)[0]);
+    console.log(arr);
     return arr; // for testing
   }
 
