@@ -96,8 +96,6 @@ function App() {
   const handleChange = async (val, newindex) => {
     let x = array_move(users, val.target.value, newindex);
     setUsers([...x]);
-    console.log([...x]);
-    setName(name);
     try {
       let res = await fetch("http://localhost:4000/leader-board/reorder", {
         method: "POST",
