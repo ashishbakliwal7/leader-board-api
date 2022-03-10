@@ -1,6 +1,6 @@
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import * as mongoose from "mongoose";
+const bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
 
 import LeaderBoardRoutes from "../src/routes/LeaderBoardRoutes";
 
