@@ -15,7 +15,7 @@ mongoose.connect(
   "mongodb+srv://ashish123:ashish123@cluster0.4hrpt.mongodb.net/test-todo",
   {},
   (err) => {
-    if (!err) {
+    if (!err : any) {
       console.log("connected to database");
     } else {
       console.log(err);
