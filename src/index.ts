@@ -1,6 +1,6 @@
-import bodyParser from "body-parser";
-import express from "express";
-import mongoose from "mongoose";
+import * as bodyParser from "body-parser";
+import * as express from "express";
+import * as mongoose from "mongoose";
 
 import LeaderBoardRoutes from "../src/routes/LeaderBoardRoutes";
 
